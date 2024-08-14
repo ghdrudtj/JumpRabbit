@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     }
     internal void Init()
     {
-        throw new NotImplementedException();
     }
     void Update()
     {

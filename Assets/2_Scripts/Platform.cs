@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    void Start()
+    public void Active(Vector2 pos)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        transform.position = pos;   
     }
 }
