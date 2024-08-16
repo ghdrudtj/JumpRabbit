@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float JumpPowerInrease = 1;
     private float JumpPower = 0;
 
     private Animator anim;
@@ -27,18 +28,20 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Space)) 
         {
             rigd.AddForce(Vector2.one*JumpPower);
-            JumpPower = 0;
             anim.SetInteger("StateID", 2);
+            JumpPower = 0;
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            JumpPower += 1;
+            JumpPower += JumpPowerInrease;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         rigd.velocity = Vector2.zero;
         anim.SetInteger("StateID", 0);
+
+        CameraManager.Instance.OnFollow(transform.position);
     }
     
 }

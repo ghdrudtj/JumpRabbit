@@ -184,7 +184,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -208,12 +208,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9.937823}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 842772976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &735960215
 GameObject:
@@ -258,6 +258,21 @@ MonoBehaviour:
   - {fileID: 1229402746449511329, guid: 575b7e9bdabe4394c9e07214adbc7c10, type: 3}
   - {fileID: 1229402746449511329, guid: 7a81cd0d0f38dda4a948095ea530e064, type: 3}
   - {fileID: 1229402746449511329, guid: 21fb813352cfbfa49955cd840e928d1d, type: 3}
+  DataArr:
+  - GroupCount: 5
+    LargePercent: 0.5
+    MiddlePercent: 0.5
+    SmallPercent: 0
+  - GroupCount: 5
+    LargePercent: 0.3
+    MiddlePercent: 0.3
+    SmallPercent: 0.4
+  - GroupCount: 5
+    LargePercent: 0.1
+    MiddlePercent: 0.1
+    SmallPercent: 0.8
+  GapIntervaMin: 1
+  GapIntervaMax: 3
 --- !u!4 &735960217
 Transform:
   m_ObjectHideFlags: 0
@@ -274,6 +289,52 @@ Transform:
   - {fileID: 1870159606}
   m_Father: {fileID: 1568298309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &842772975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842772976}
+  - component: {fileID: 842772977}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &842772976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842772975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 519420032}
+  m_Father: {fileID: 1568298309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842772977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842772975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c84b47c1ff2d24fb2841bca509538d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follSpeed: 5
 --- !u!1 &993697553
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformManager: {fileID: 735960216}
   player: {fileID: 1899749523}
+  cameraManager: {fileID: 842772977}
 --- !u!4 &1568298309
 Transform:
   m_ObjectHideFlags: 0
@@ -403,6 +465,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 735960217}
+  - {fileID: 842772976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1870159605
@@ -471,7 +534,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -495,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab83d02ce3c3bcc4ba45e69436555020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JumpPowerInrease: 1
 --- !u!4 &1899749524
 Transform:
   m_ObjectHideFlags: 0
@@ -543,9 +607,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.557132}
+  m_Offset: {x: 0.5964608, y: 0.557132}
   serializedVersion: 2
-  m_Radius: 0.50101125
+  m_Radius: 0.5507164
 --- !u!95 &1899749526
 Animator:
   serializedVersion: 5
@@ -571,6 +635,5 @@ Animator:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 1899749524}
   - {fileID: 1568298309}
