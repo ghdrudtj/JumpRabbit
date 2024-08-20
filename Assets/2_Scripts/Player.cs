@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float JumpPowerInrease = 1;
     private float JumpPower = 0;
 
     private Animator anim;
@@ -33,7 +32,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            JumpPower += JumpPowerInrease;
+            JumpPower += DataBaseManager.Instance.JumpPowerIncrease;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

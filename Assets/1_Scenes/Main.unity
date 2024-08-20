@@ -245,34 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosTrf: {fileID: 1870159606}
-  LargePlatformArr:
-  - {fileID: 4113753265930877872, guid: 7ffeed49f29000e41b89a8cec93d7cf7, type: 3}
-  - {fileID: 4113753265930877872, guid: 4e338344002260041984db5501598fc4, type: 3}
-  - {fileID: 4113753265930877872, guid: 30b1c603d421cb0488f84ce63c3e7e5d, type: 3}
-  MiddlePlatformArr:
-  - {fileID: 4811538973759138843, guid: 636edeb52b923754fb7684eded586b7d, type: 3}
-  - {fileID: 4811538973759138843, guid: 03e7f1c8fdd45824c85bbc42a0675b19, type: 3}
-  - {fileID: 4811538973759138843, guid: e4c1f2aeddb19534785f815ce23577c3, type: 3}
-  SmallPlatformArr:
-  - {fileID: 1229402746449511329, guid: 19c5371939a6da94e8d96dffe19f446f, type: 3}
-  - {fileID: 1229402746449511329, guid: 575b7e9bdabe4394c9e07214adbc7c10, type: 3}
-  - {fileID: 1229402746449511329, guid: 7a81cd0d0f38dda4a948095ea530e064, type: 3}
-  - {fileID: 1229402746449511329, guid: 21fb813352cfbfa49955cd840e928d1d, type: 3}
-  DataArr:
-  - GroupCount: 5
-    LargePercent: 0.5
-    MiddlePercent: 0.5
-    SmallPercent: 0
-  - GroupCount: 5
-    LargePercent: 0.3
-    MiddlePercent: 0.3
-    SmallPercent: 0.4
-  - GroupCount: 5
-    LargePercent: 0.1
-    MiddlePercent: 0.1
-    SmallPercent: 0.8
-  GapIntervaMin: 1
-  GapIntervaMax: 3
 --- !u!4 &735960217
 Transform:
   m_ObjectHideFlags: 0
@@ -334,7 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c84b47c1ff2d24fb2841bca509538d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follSpeed: 5
 --- !u!1 &993697553
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +422,7 @@ MonoBehaviour:
   platformManager: {fileID: 735960216}
   player: {fileID: 1899749523}
   cameraManager: {fileID: 842772977}
+  dataBaseManager: {fileID: 11400000, guid: 368c3c236861fb84d9013ea9ed04a2f7, type: 2}
 --- !u!4 &1568298309
 Transform:
   m_ObjectHideFlags: 0
@@ -558,7 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab83d02ce3c3bcc4ba45e69436555020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPowerInrease: 1
 --- !u!4 &1899749524
 Transform:
   m_ObjectHideFlags: 0

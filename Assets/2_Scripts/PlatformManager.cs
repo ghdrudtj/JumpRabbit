@@ -8,10 +8,10 @@ public class PlatformManager : MonoBehaviour
     [System.Serializable]
     public class Data
     {
-        public int GroupCount;
-        [SerializeField] public float LargePercent;
-        [SerializeField] public float MiddlePercent;
-        [SerializeField] public float SmallPercent;
+        [Tooltip("ÇÃ·§Æû ±×·ì °¹¼ö")]public int GroupCount;
+        [Tooltip("Å« ÇÃ·§Æû ºñÀ² 0~1"),Range(0,1f)][SerializeField] private float LargePercent;
+        [Tooltip("Áß°£ ÇÃ·§Æû ºñÀ² 0~1"),Range(0, 1f)][SerializeField] private float MiddlePercent;
+        [Tooltip("ÀÛÀº ÇÃ·§Æû ºñÀ² 0~1"),Range(0, 1f)][SerializeField] private float SmallPercent;
 
         public int GetPlatformID()
         {
@@ -34,14 +34,8 @@ public class PlatformManager : MonoBehaviour
     }
 
     [SerializeField] private Transform SpawnPosTrf;
-    [SerializeField] private Platform[] LargePlatformArr;
-    [SerializeField] private Platform[] MiddlePlatformArr;
-    [SerializeField] private Platform[] SmallPlatformArr;
-    [SerializeField] private Data[] DataArr;
+    
     private int platformNum;
-
-    [SerializeField] private float GapIntervaMin = 1;
-    [SerializeField] private float GapIntervaMax = 3;
 
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     internal void Active()
@@ -49,7 +43,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 pos = SpawnPosTrf.position;
         int platformGroupSum = 0;
 
-        foreach (Data data in DataArr)
+        foreach (Data data in DataBaseManager.Instance.DataArr)
         {
             platformGroupSum += data.GroupCount;
             Debug.Log($"platformGroupSum : {platformGroupSum}");
@@ -75,15 +69,15 @@ public class PlatformManager : MonoBehaviour
             pos = pos + Vector3.right * platform.GetHalfSizeX();
         platform.Active(pos);
 
-        float gap =Random.Range(GapIntervaMin, GapIntervaMax);
+        float gap =Random.Range(DataBaseManager.Instance.GapIntervaMin, DataBaseManager.Instance.GapIntervaMax);
         pos = pos + Vector3.right * (platform.GetHalfSizeX()+gap);
 
         return pos;
     }
     internal void Init()
     {
-        PlatformArrDic.Add(0, SmallPlatformArr);
-        PlatformArrDic.Add(1, MiddlePlatformArr);
-        PlatformArrDic.Add(2, LargePlatformArr);
+        PlatformArrDic.Add(0, DataBaseManager.Instance.SmallPlatformArr);
+        PlatformArrDic.Add(1, DataBaseManager.Instance.MiddlePlatformArr);
+        PlatformArrDic.Add(2, DataBaseManager.Instance.LargePlatformArr);
     }
 }
