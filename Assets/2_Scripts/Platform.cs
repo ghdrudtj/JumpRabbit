@@ -5,6 +5,8 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private BoxCollider2D cof;
+    [SerializeField] private int score;
+    public int Score => score;
 
     public float GetHalfSizeX()
     {
@@ -17,5 +19,9 @@ public class Platform : MonoBehaviour
     public void Active(Vector2 pos)
     {
         transform.position = pos;   
+    }
+    internal void OnLanding()
+    {
+        ScoreManager.instance.AddScore(score, transform.position);
     }
 }

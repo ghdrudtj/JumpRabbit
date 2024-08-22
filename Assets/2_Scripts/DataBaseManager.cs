@@ -17,6 +17,7 @@ public class DataBaseManager : ScriptableObject
 
     [Tooltip("플랫폼 최소 간격")] public float GapIntervaMin = 1;
     [Tooltip("플랫폼 최대 간격")] public float GapIntervaMax = 3;
+    [Tooltip("보너스 추가 점수")] public float BonusValue = 0;
 
     [Header("카메라")]
     public float followSpeed = 5f;
