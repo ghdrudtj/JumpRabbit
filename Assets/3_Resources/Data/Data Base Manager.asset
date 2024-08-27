@@ -41,4 +41,5 @@ MonoBehaviour:
     SmallPercent: 0.8
   GapIntervaMin: 1
   GapIntervaMax: 3
+  BonusValue: 0.05
   followSpeed: 5

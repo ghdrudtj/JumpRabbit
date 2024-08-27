@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.XR;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private TextMeshProUGUI scoreTmp;
+    [SerializeField] private TextMeshProUGUI bonusTmp;
     [SerializeField] private Score baseScore;
 
     private int totalScore;
+    private float totalBonus;
     public void lnit()
     {
         instance = this;
@@ -20,17 +24,25 @@ public class ScoreManager : MonoBehaviour
     {
         Score scoreObject = Instantiate(baseScore);
         scoreObject.transform.position = scorePos;
-        scoreObject.Active(score);
+        scoreObject.Active(score.ToString(), DataBaseManager.Instance.ScoreColor);
 
         totalScore += score;
         scoreTmp.text = totalScore.ToString();
     }
-    internal void AddBonus(float bonusValue, Vector3 position)
+    internal void AddBonus(float bonus, Vector2 position)
     {
-        //throw new NotImplementedException();
+        Score scoreObject = Instantiate(baseScore);
+        scoreObject.transform.position = position;
+
+        string str = "Bouns" + bonus.ToPercentString();
+        scoreObject.Active(str, DataBaseManager.Instance.BonusColor);
+
+        totalBonus += bonus;
+        bonusTmp.text = totalBonus.ToPercentString();
     }
     internal void ResetBonus()
     {
-        //throw new NotImplementedException();
+        totalBonus = 0;
+        bonusTmp.text = totalBonus.ToPercentString();
     }
 }
