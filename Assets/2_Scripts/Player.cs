@@ -45,20 +45,17 @@ public class Player : MonoBehaviour
 
         if (collision.transform.parent.TryGetComponent(out Platform platform))
         {
-            //platform.OnLanding();
-            ScoreManager.instance.AddScore(platform.Score, platform.transform.position);
-
             if (landedPlatform != platform)
             {
                 ScoreManager.instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
             }
             else
             {
-                ScoreManager.instance.ResetBonus();
+                ScoreManager.instance.ResetBonus(transform.position);
             }
-            landedPlatform = platform;
+            ScoreManager.instance.AddScore(platform.Score,platform.transform.position);
 
+            landedPlatform = platform;
         }
     }
-    
 }

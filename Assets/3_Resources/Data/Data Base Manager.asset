@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46430cf5e7c7cb4d96667decf776197, type: 3}
   m_Name: Data Base Manager
   m_EditorClassIdentifier: 
+  ScoreColor: {r: 1, g: 1, b: 1, a: 0}
+  BonusColor: {r: 0, g: 1, b: 0.49411765, a: 0}
+  ScorePopInterval: 0.2
   JumpPowerIncrease: 3
   LargePlatformArr:
   - {fileID: 4113753265930877872, guid: 7ffeed49f29000e41b89a8cec93d7cf7, type: 3}

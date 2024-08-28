@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class ScoreManager : MonoBehaviour
@@ -49,7 +50,7 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
-    public void AddScore(int score, Vector2 scorePos)
+    public void AddScore(int score, Vector2 scorePos, bool isCalcBouns=true)
     {
         //애니
         scoreDataList.Add(new ScoreData()
@@ -61,12 +62,18 @@ public class ScoreManager : MonoBehaviour
         //Canvas
         totalScore += score;
         scoreTmp.text = totalScore.ToString();
+
+        if (isCalcBouns)
+        {
+            int bonusScore = (int)(score * totalBonus);
+            AddScore(bonusScore,scorePos,false);
+        }
     }
     internal void AddBonus(float bonus, Vector2 position)
     {
         scoreDataList.Add(new ScoreData()
         {
-            str = "Bouns" + bonus.ToPercentString(),
+            str = "Bouns " + bonus.ToPercentString(),
             color = DataBaseManager.Instance.BonusColor,
             pos = position
         });
@@ -74,8 +81,15 @@ public class ScoreManager : MonoBehaviour
         totalBonus += bonus;
         bonusTmp.text = totalBonus.ToPercentString();
     }
-    internal void ResetBonus()
+    internal void ResetBonus(Vector2 bonusPos)
     {
+        scoreDataList.Add(new ScoreData()
+        {
+            str = "Bouns 초기화" ,
+            color = DataBaseManager.Instance.BonusColor,
+            pos = bonusPos
+        });
+
         totalBonus = 0;
         bonusTmp.text = totalBonus.ToPercentString();
     }
