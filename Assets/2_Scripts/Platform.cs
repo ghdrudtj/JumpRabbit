@@ -18,7 +18,13 @@ public class Platform : MonoBehaviour
     }
     public void Active(Vector2 pos)
     {
-        transform.position = pos;   
+        transform.position = pos;
+
+        if(Random.value < DataBaseManager.Instance.itemSpawnPer)
+        {
+            Item item = Instantiate<Item>(DataBaseManager.Instance.baseItem);
+            item.Active(transform.position, GetHalfSizeX());
+        }
     }
     internal void OnLanding()
     {

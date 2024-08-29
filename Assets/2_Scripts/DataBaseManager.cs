@@ -12,6 +12,11 @@ public class DataBaseManager : ScriptableObject
     public Color BonusColor;
     public float ScorePopInterval = 0.2f;
 
+    [Header("아이템")]
+    public Item baseItem;
+    public float itemSpawnPer = 0.2f;
+    public float itemBonus = 0.25f;
+
     [Header("플레이어")]
     public float JumpPowerIncrease = 1;
 
