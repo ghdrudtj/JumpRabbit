@@ -32,8 +32,47 @@ public class DataBaseManager : ScriptableObject
 
     [Header("카메라")]
     public float followSpeed = 5f;
+
+    [Header("사운드")]
+    public SfxData[] sfxDataArr;
+    public BgmData[] bgaDataArr;
+    private Dictionary<Define.SfxType, SfxData> sfxDataDic = new Dictionary<Define.SfxType, SfxData> ();
+    private Dictionary<Define.BgmType, BgmData> bgmDataDic = new Dictionary<Define.BgmType, BgmData> ();
     public void Init()
     {
         Instance = this;
+
+        foreach(SfxData data in sfxDataArr)
+        {
+            sfxDataDic.Add(data.sfxType, data);
+        }
+        foreach(BgmData data in bgaDataArr)
+        {
+            bgmDataDic.Add(data.bgmType, data);
+        }
+    }
+    public SfxData GetSfxData(Define.SfxType type)
+    {
+        return sfxDataDic[type];
+    }
+    public BgmData GetBgaData(Define.BgmType type)
+    {
+        return bgmDataDic[type];
+    }
+    [System.Serializable]
+    public class SfxData : SoundData
+    {
+        public Define.SfxType sfxType;
+    }
+    [System.Serializable]
+    public class BgmData:SoundData
+    {
+        public Define.BgmType bgmType;
+    }
+    [System.Serializable]
+    public class SoundData
+    {
+        public AudioClip clip;
+        public float voIume = 1;
     }
 }

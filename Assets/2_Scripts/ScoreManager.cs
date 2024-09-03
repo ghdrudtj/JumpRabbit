@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
 
 public class ScoreManager : MonoBehaviour
 {

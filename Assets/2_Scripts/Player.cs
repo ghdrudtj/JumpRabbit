@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Player : MonoBehaviour
             rigd.AddForce(Vector2.one*JumpPower);
             anim.SetInteger("StateID", 2);
             JumpPower = 0;
+
+            Define.SfxType sfxType = Random.value < 0.5f ? Define.SfxType.Jump1 : Define.SfxType.Jump2;
+            SoundManager.instance.PlaySfx(sfxType);
         }
         else if (Input.GetKey(KeyCode.Space))
         {
