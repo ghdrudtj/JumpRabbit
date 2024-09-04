@@ -33,20 +33,20 @@ MonoBehaviour:
   - {fileID: 1229402746449511329, guid: 7a81cd0d0f38dda4a948095ea530e064, type: 3}
   - {fileID: 1229402746449511329, guid: 21fb813352cfbfa49955cd840e928d1d, type: 3}
   DataArr:
-  - GroupCount: 5
+  - GroupCount: 10
     LargePercent: 0.5
     MiddlePercent: 0.5
     SmallPercent: 0
-  - GroupCount: 5
+  - GroupCount: 10
     LargePercent: 0.3
     MiddlePercent: 0.3
     SmallPercent: 0.4
-  - GroupCount: 5
+  - GroupCount: 10
     LargePercent: 0.1
     MiddlePercent: 0.1
     SmallPercent: 0.8
   GapIntervaMin: 1
-  GapIntervaMax: 3
+  GapIntervaMax: 1
   BonusValue: 0.05
   followSpeed: 5
   sfxDataArr:

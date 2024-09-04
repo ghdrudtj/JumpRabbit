@@ -5,6 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private BoxCollider2D cof;
+    private Animation anim;
     [SerializeField] private int score;
     public int Score => score;
 
@@ -15,6 +16,7 @@ public class Platform : MonoBehaviour
     private void Awake()
     {
         cof= GetComponentInChildren<BoxCollider2D>();
+        anim= GetComponent<Animation>();
     }
     public void Active(Vector2 pos)
     {
@@ -28,6 +30,7 @@ public class Platform : MonoBehaviour
     }
     internal void OnLanding()
     {
+        anim.Play();
         ScoreManager.instance.AddScore(score, transform.position);
     }
 }
