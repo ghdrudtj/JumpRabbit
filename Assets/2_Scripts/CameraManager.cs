@@ -8,7 +8,6 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private SpriteRenderer bgSrdr;
     float cameraWidth;
-
     public void Init()
     {
         Instance = this;
@@ -36,6 +35,4 @@ public class CameraManager : MonoBehaviour
     {
         StartCoroutine(OnFollowCor(targePos));
     }
-
-
 }

@@ -18,19 +18,19 @@ public class Platform : MonoBehaviour
         cof= GetComponentInChildren<BoxCollider2D>();
         anim= GetComponent<Animation>();
     }
-    public void Active(Vector2 pos)
+    public void Active(Vector2 pos, bool isFirstFrame)
     {
         transform.position = pos;
-
+        if (isFirstFrame )
+            return;
         if(Random.value < DataBaseManager.Instance.itemSpawnPer)
         {
             Item item = Instantiate<Item>(DataBaseManager.Instance.baseItem);
             item.Active(transform.position, GetHalfSizeX());
         }
     }
-    internal void OnLanding()
+    internal void OnLandingAnim()
     {
         anim.Play();
-        ScoreManager.instance.AddScore(score, transform.position);
     }
 }

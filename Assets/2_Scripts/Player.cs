@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
 
             Define.SfxType sfxType = Random.value < 0.5f ? Define.SfxType.Jump1 : Define.SfxType.Jump2;
             SoundManager.instance.PlaySfx(sfxType);
+
+            Effect effect = Instantiate(DataBaseManager.Instance.effect);
+            effect.Active(transform.position);
         }
         else if (Input.GetKey(KeyCode.Space))
         {
@@ -49,7 +52,12 @@ public class Player : MonoBehaviour
 
         if (collision.transform.TryGetComponent(out Platform platform))
         {
-            platform.OnLanding();
+            platform.OnLandingAnim();
+            if (landedPlatform == null)
+            {
+                landedPlatform = platform;
+                return;
+            }
             if (landedPlatform != platform)
             {
                 ScoreManager.instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);

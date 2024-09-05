@@ -15,6 +15,7 @@ MonoBehaviour:
   ScoreColor: {r: 1, g: 1, b: 1, a: 0}
   BonusColor: {r: 0, g: 1, b: 0.49411765, a: 0}
   ScorePopInterval: 0.2
+  effect: {fileID: 2697959375864586015, guid: 982119485b812ac4db9df35c3c9f9f8b, type: 3}
   baseItem: {fileID: 8680430477555270186, guid: 344644bbd439d3b41a5ac0ad80cbbd11, type: 3}
   itemSpawnPer: 0.5
   itemBonus: 0.25
@@ -45,8 +46,8 @@ MonoBehaviour:
     LargePercent: 0.1
     MiddlePercent: 0.1
     SmallPercent: 0.8
-  GapIntervaMin: 1
-  GapIntervaMax: 1
+  GapIntervaMin: 0.5
+  GapIntervaMax: 0.5
   BonusValue: 0.05
   followSpeed: 5
   sfxDataArr:

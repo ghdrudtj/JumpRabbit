@@ -11,6 +11,7 @@ public class DataBaseManager : ScriptableObject
     public Color ScoreColor;
     public Color BonusColor;
     public float ScorePopInterval = 0.2f;
+    public Effect effect;
 
     [Header("æ∆¿Ã≈€")]
     public Item baseItem;
