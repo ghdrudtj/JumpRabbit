@@ -34,13 +34,13 @@ public class PlatformManager : MonoBehaviour
     }
 
     [SerializeField] private Transform SpawnPosTrf;
-    
+    private Vector3 spawnpos;
     private int platformNum;
 
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     internal void Active()
     {
-        Vector3 pos = SpawnPosTrf.position;
+        spawnpos = SpawnPosTrf.position;
         int platformGroupSum = 0;
 
         foreach (Data data in DataBaseManager.Instance.DataArr)
@@ -50,12 +50,12 @@ public class PlatformManager : MonoBehaviour
             while (platformNum < platformGroupSum)
             {
                 int platfromID = data.GetPlatformID();
-                pos = ActiveOne(pos, platfromID);
+                ActiveOne(platfromID);
                 platformNum++;
             }
         }
     }
-    private Vector3 ActiveOne(Vector3 pos, int platformID)
+    private void ActiveOne(int platformID)
     {
         Platform[] platforms = PlatformArrDic[platformID];
 
@@ -67,12 +67,12 @@ public class PlatformManager : MonoBehaviour
 
         bool isFirstFrame = platformNum == 0;
         if(isFirstFrame == false)
-            pos = pos + Vector3.right * platform.GetHalfSizeX();
-        platform.Active(pos, isFirstFrame);
+            spawnpos = spawnpos + Vector3.right * platform.GetHalfSizeX();
+        platform.Active(spawnpos, isFirstFrame);
 
         float gap =Random.Range(DataBaseManager.Instance.GapIntervaMin, DataBaseManager.Instance.GapIntervaMax);
-        pos = pos + Vector3.right * (platform.GetHalfSizeX()+gap);
-        return pos;
+        spawnpos = spawnpos + Vector3.right * (platform.GetHalfSizeX()+gap);
+        return;
     }
     internal void Init()
     {
