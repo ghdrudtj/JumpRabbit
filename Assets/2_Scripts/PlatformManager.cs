@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class PlatformManager : MonoBehaviour
 {
+    public static PlatformManager instance;
     [System.Serializable]
     public class Data
     {
@@ -36,6 +37,7 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] private Transform SpawnPosTrf;
     private Vector3 spawnpos;
     private int platformNum;
+    public int LandingPlatformNum;
 
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     internal void Active()
@@ -51,12 +53,12 @@ public class PlatformManager : MonoBehaviour
             {
                 int platfromID = data.GetPlatformID();
                 ActiveOne(platfromID);
-                platformNum++;
             }
         }
     }
     private void ActiveOne(int platformID)
     {
+        platformNum++;
         Platform[] platforms = PlatformArrDic[platformID];
 
         int randID = Random.Range(0, platforms.Length);
@@ -65,10 +67,9 @@ public class PlatformManager : MonoBehaviour
 
         Platform platform = Instantiate(randomplatform);
 
-        bool isFirstFrame = platformNum == 0;
-        if(isFirstFrame == false)
+        if(platformNum > 1)
             spawnpos = spawnpos + Vector3.right * platform.GetHalfSizeX();
-        platform.Active(spawnpos, isFirstFrame);
+        platform.Active(spawnpos, platformNum);
 
         float gap =Random.Range(DataBaseManager.Instance.GapIntervaMin, DataBaseManager.Instance.GapIntervaMax);
         spawnpos = spawnpos + Vector3.right * (platform.GetHalfSizeX()+gap);
@@ -76,8 +77,23 @@ public class PlatformManager : MonoBehaviour
     }
     internal void Init()
     {
+        instance = this;
         PlatformArrDic.Add(0, DataBaseManager.Instance.SmallPlatformArr);
         PlatformArrDic.Add(1, DataBaseManager.Instance.MiddlePlatformArr);
         PlatformArrDic.Add(2, DataBaseManager.Instance.LargePlatformArr);
+    }
+    public void Update()
+    {
+        if(platformNum - LandingPlatformNum < DataBaseManager.Instance.remainPlatformCount)
+        {
+            int lastindex = DataBaseManager.Instance.DataArr.Length - 1;
+            Data lastData = DataBaseManager.Instance.DataArr[lastindex];
+
+            for (int i = 0; i < lastData.GroupCount; i++)
+            {
+                int platfromID = lastData.GetPlatformID();
+                ActiveOne(platfromID);
+            }
+        }
     }
 }

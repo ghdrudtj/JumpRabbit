@@ -6,6 +6,7 @@ public class Platform : MonoBehaviour
 {
     private BoxCollider2D cof;
     private Animation anim;
+    public int number;
     [SerializeField] private int score;
     public int Score => score;
 
@@ -18,10 +19,11 @@ public class Platform : MonoBehaviour
         cof= GetComponentInChildren<BoxCollider2D>();
         anim= GetComponent<Animation>();
     }
-    public void Active(Vector2 pos, bool isFirstFrame)
+    public void Active(Vector2 pos, int platformNum)
     {
         transform.position = pos;
-        if (isFirstFrame )
+        number = platformNum;
+        if (platformNum==1)
             return;
         if(Random.value < DataBaseManager.Instance.itemSpawnPer)
         {
