@@ -24,8 +24,15 @@ public class ScoreManager : MonoBehaviour
     public void lnit()
     {
         instance = this;
-        StartCoroutine(OnScoreCor());
     }
+    public void Active()
+    {
+        StartCoroutine(OnScoreCor());
+
+        scoreTmp.text = totalScore.ToString();
+        bonusTmp.text = totalBonus.ToPercentString();
+    }
+
     private IEnumerator OnScoreCor()
     {
         while(true)

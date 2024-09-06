@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
         {
             JumpPower += DataBaseManager.Instance.JumpPowerIncrease;
         }
+        if (transform.position.y < DataBaseManager.Instance.GameOverYHeight)
+        {
+            GameManager.instance.OnGameOver();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

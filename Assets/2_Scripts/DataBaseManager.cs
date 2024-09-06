@@ -20,6 +20,7 @@ public class DataBaseManager : ScriptableObject
 
     [Header("ÇÃ·¹ÀÌ¾î")]
     public float JumpPowerIncrease = 1;
+    public float GameOverYHeight = -6.5f;
 
     [Header("ÇÃ·§Æû")]
     [Tooltip("Å« ÇÃ·§Æû Prab")]public Platform[] LargePlatformArr;
@@ -42,11 +43,12 @@ public class DataBaseManager : ScriptableObject
     public void Init()
     {
         Instance = this;
-
+        sfxDataDic = new Dictionary<Define.SfxType, SfxData>();
         foreach(SfxData data in sfxDataArr)
         {
             sfxDataDic.Add(data.sfxType, data);
         }
+        bgmDataDic = new Dictionary<Define.BgmType, BgmData>();
         foreach(BgmData data in bgaDataArr)
         {
             bgmDataDic.Add(data.bgmType, data);
