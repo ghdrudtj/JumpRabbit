@@ -70,7 +70,10 @@ public class ScoreManager : MonoBehaviour
         if (isCalcBouns)
         {
             int bonusScore = (int)(score * totalBonus);
-            AddScore(bonusScore,scorePos,false);
+            if  (bonusScore > 0)
+            {
+                 AddScore(bonusScore,scorePos,false);
+            }
         }
     }
     internal void AddBonus(float bonus, Vector2 position)
